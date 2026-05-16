@@ -12,10 +12,16 @@ export function useFoldOverlay(
 
   useEffect(() => {
     if (!isOpen) return
+    const html = document.documentElement
+    const prevHtmlOverflow = html.style.overflow
+    const prevBodyOverflow = document.body.style.overflow
+    html.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
-    const t = window.setTimeout(() => closeButtonRef.current?.focus(), 80)
+    // Focus after the slide-in finishes — mid-animation focus can cause layout jitter.
+    const t = window.setTimeout(() => closeButtonRef.current?.focus(), 560)
     return () => {
-      document.body.style.overflow = ''
+      html.style.overflow = prevHtmlOverflow
+      document.body.style.overflow = prevBodyOverflow
       window.clearTimeout(t)
     }
   }, [isOpen])
