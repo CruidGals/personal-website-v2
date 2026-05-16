@@ -1,0 +1,148 @@
+/* Full-screen panel: slides in from left or right */
+.fold-root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.fold-panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.07);
+  will-change: transform;
+}
+
+.fold-panel--from-left {
+  animation: slide-in-from-left 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fold-panel--from-right {
+  animation: slide-in-from-right 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fold-panel--from-left.fold-panel--out {
+  animation: slide-out-to-left 0.45s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+.fold-panel--from-right.fold-panel--out {
+  animation: slide-out-to-right 0.45s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-out-to-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fold-panel {
+    animation: none;
+    transform: none;
+    will-change: auto;
+    box-shadow: none;
+  }
+
+  .fold-panel.fold-panel--out {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+}
+
+.fold-panel-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.fold-panel-header h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);
+}
+
+.fold-close {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.45em 0.85em;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.fold-close:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.fold-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.fold-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  -webkit-overflow-scrolling: touch;
+}
+
+.fold-panel-body p {
+  max-width: 42rem;
+  margin: 0 0 1rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.fold-panel-body p:last-child {
+  margin-bottom: 0;
+}

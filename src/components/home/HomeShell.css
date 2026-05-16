@@ -1,0 +1,88 @@
+/* Full viewport: hero centered, section titles fixed to corners */
+.home-shell {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home-hero-slot {
+  display: flex;
+  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 14vh, 8rem) clamp(1rem, 4vw, 2rem);
+  box-sizing: border-box;
+}
+
+.section-corner-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.section-corner {
+  position: absolute;
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  max-width: min(13rem, 40vw);
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.section-corner--tl {
+  top: 0;
+  left: 0;
+  text-align: left;
+}
+
+.section-corner--bl {
+  bottom: 0;
+  left: 0;
+  text-align: left;
+}
+
+.section-corner--tr {
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+.section-corner--br {
+  bottom: 0;
+  right: 0;
+  text-align: right;
+}
+
+.section-nav-btn {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+  font-size: clamp(1.05rem, 0.85rem + 0.9vw, 1.45rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0.35em 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease,
+    filter 0.2s ease;
+}
+
+.section-nav-btn:hover {
+  color: var(--accent);
+  text-decoration-color: rgba(170, 59, 255, 0.45);
+  filter: drop-shadow(0 0 10px rgba(170, 59, 255, 0.35));
+}
+
+.section-nav-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}

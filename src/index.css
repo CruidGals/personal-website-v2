@@ -17,8 +17,11 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  /* Fluid root: rem-based UI scales smoothly with viewport and browser zoom. */
+  font-size: clamp(15px, 0.35vw + 14px, 18px);
+  line-height: 145%;
+  font-family: var(--sans);
+  letter-spacing: 0.01em;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -27,9 +30,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Hero: one fluid scale (rem + vw) so title, tagline, and icons move together. */
+  --hero-title: clamp(1.85rem, 1.1rem + 3.2vw, 3.35rem);
+  --hero-tagline: clamp(1rem, 0.88rem + 0.55vw, 1.2rem);
+  --hero-icon: clamp(1.125rem, 0.95rem + 0.65vw, 1.5rem);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -72,22 +76,34 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  font-size: clamp(2rem, 1.35rem + 2.4vw, 3.15rem);
+  letter-spacing: -0.03em;
+  margin: 1.75rem 0;
 }
+
 h2 {
-  font-size: 24px;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.35rem);
   line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+/* Front hero: lock title / tagline / icon size to shared fluid variables. */
+#hero h1 {
+  font-size: var(--hero-title);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.35em;
+}
+
+#hero .hero-tagline {
+  font-size: var(--hero-tagline);
+  line-height: 1.35;
+  color: var(--text);
+}
+
+#hero .hero-icon {
+  width: var(--hero-icon);
+  height: var(--hero-icon);
 }
 p {
   margin: 0;
