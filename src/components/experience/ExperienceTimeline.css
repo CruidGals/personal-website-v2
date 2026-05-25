@@ -1,4 +1,8 @@
 .experience-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
   width: 100%;
   max-width: 46rem;
   margin-inline: auto;
@@ -6,8 +10,9 @@
   line-height: 1.55;
 }
 
-.experience-lead {
-  margin: 0 auto 2rem;
+/* Beat .fold-panel-body p { margin-bottom: 1rem } — that rule was blocking spacing changes */
+.experience-content .experience-lead {
+  margin: 0 auto;
   max-width: 40rem;
   font-size: 1.02rem;
   color: var(--text-h);
@@ -19,7 +24,8 @@
   --timeline-axis: 0.425rem;
   --timeline-spine: 2px;
   --node-size: 0.75rem;
-  --timeline-gap: 1.15rem;
+  --timeline-gap: 2.25rem;
+  align-self: stretch;
   position: relative;
   width: 100%;
   max-width: 42rem;
@@ -65,7 +71,7 @@
 .experience-entry-marker {
   position: absolute;
   left: var(--timeline-axis);
-  top: 1.35rem;
+  top: 0.55rem;
   width: var(--node-size);
   height: var(--node-size);
   transform: translateX(-50%);
@@ -78,120 +84,78 @@
   z-index: 1;
 }
 
-.experience-entry--incoming .experience-entry-marker {
-  border-style: dashed;
-  animation: experience-node-pulse 2.8s ease-in-out infinite;
-}
-
-@keyframes experience-node-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 4px var(--accent-bg),
-      0 0 8px rgba(170, 59, 255, 0.25);
-  }
-  50% {
-    box-shadow:
-      0 0 0 6px var(--accent-bg),
-      0 0 16px rgba(170, 59, 255, 0.45);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .experience-entry--incoming .experience-entry-marker {
-    animation: none;
-  }
-}
-
 .experience-card {
-  padding: 0.95rem 1.05rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--code-bg);
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  padding: 0;
 }
 
-.experience-entry:hover .experience-card,
-.experience-entry:focus-within .experience-card {
-  border-color: var(--accent-border);
-  box-shadow: var(--shadow);
-}
-
-.experience-card-header {
+/*
+ * One row, two columns. Same stack gap in both columns (one CSS variable).
+ * Left: title → company. Right: dates → location.
+ */
+.experience-header {
+  --experience-header-stack-gap: 0.3rem;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.65rem 1rem;
-  margin-bottom: 0.65rem;
+  column-gap: 1.25rem;
+  margin: 0 0 0.65rem;
+  width: 100%;
 }
 
-.experience-card-titles {
-  flex: 1 1 12rem;
-  min-width: 0;
-}
-
-.experience-role {
+.experience-header-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--experience-header-stack-gap);
   margin: 0;
-  font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.05rem);
+  padding: 0;
+}
+
+.experience-header-col > * {
+  margin: 0;
+  padding: 0;
+}
+
+.experience-header-col--primary {
+  flex: 1 1 0;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.experience-header-col--meta {
+  flex: 0 0 auto;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.experience-title {
+  font-size: clamp(1.15rem, 1.05rem + 0.45vw, 1.35rem);
   font-weight: 500;
   color: var(--text-h);
   letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-.experience-org {
-  margin: 0.15rem 0 0;
-  font-size: 0.88rem;
-  color: var(--accent);
+.experience-company {
+  font-size: 0.9rem;
   font-weight: 500;
-}
-
-.experience-badge {
-  flex-shrink: 0;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.55rem;
-  border-radius: 6px;
   color: var(--accent);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
+  line-height: 1.25;
 }
 
-.experience-badge--current {
-  color: var(--text-h);
-  background: var(--bg);
-  border-color: var(--border);
-}
-
-.experience-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.75rem;
-  margin: 0 0 0.6rem;
+.experience-dates {
   font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-h);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.experience-location {
+  font-size: 0.8rem;
   color: var(--text);
-}
-
-.experience-meta-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.experience-meta-item::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent-border);
-}
-
-.experience-meta-item:first-child::before {
-  display: none;
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
 .experience-summary {
@@ -220,25 +184,6 @@
 
 .experience-bullets li:last-child {
   margin-bottom: 0;
-}
-
-.experience-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: 0.85rem;
-  padding-top: 0.7rem;
-  border-top: 1px dashed var(--border);
-}
-
-.experience-tag {
-  font-size: 0.72rem;
-  padding: 0.22rem 0.48rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--mono);
 }
 
 /* Staggered entrance when panel opens */
