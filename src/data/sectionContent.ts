@@ -1,10 +1,7 @@
 export const SECTION_COPY = {
   about: {
     title: 'About',
-    paragraphs: [
-      'This is a placeholder for your bio: background, interests, and what you are building toward.',
-      'Replace this copy when you are ready to tell your story.',
-    ],
+    paragraphs: [],
   },
   projects: {
     title: 'Projects',
@@ -15,10 +12,7 @@ export const SECTION_COPY = {
   },
   experience: {
     title: 'Experience',
-    paragraphs: [
-      'Summarize roles, impact, and technologies. Timeline or grouped by company works well.',
-      'Placeholder text until you wire real résumé content.',
-    ],
+    paragraphs: [],
   },
   contact: {
     title: 'Contact',

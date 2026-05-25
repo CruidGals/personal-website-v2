@@ -1,4 +1,7 @@
 import { type AnimationEvent, useCallback, useId, useState } from 'react'
+import { AboutContent } from './components/about/AboutContent'
+import { ExperienceTimeline } from './components/experience/ExperienceTimeline'
+import { ProjectsContent } from './components/projects/ProjectsContent'
 import { FoldOverlay } from './components/fold/FoldOverlay'
 import { HomeLayout } from './components/home/HomeLayout'
 import {
@@ -56,13 +59,25 @@ function App() {
           sectionKey={openSection}
           slideFrom={SECTION_SLIDE_FROM[openSection]}
           title={copy.title}
-          paragraphs={copy.paragraphs}
+          paragraphs={
+            openSection === 'about' ||
+            openSection === 'experience' ||
+            openSection === 'projects'
+              ? undefined
+              : copy.paragraphs
+          }
           exiting={exiting}
           titleId={titleId}
           closeButtonRef={closeButtonRef}
           onCloseClick={requestClose}
           onExitAnimationEnd={onExitAnimationEnd}
-        />
+        >
+          {openSection === 'about' && (
+            <AboutContent onNavigateToSection={openSectionPanel} />
+          )}
+          {openSection === 'experience' && <ExperienceTimeline />}
+          {openSection === 'projects' && <ProjectsContent />}
+        </FoldOverlay>
       )}
     </>
   )

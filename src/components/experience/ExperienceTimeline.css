@@ -1,0 +1,279 @@
+.experience-content {
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.experience-lead {
+  margin: 0 auto 2rem;
+  max-width: 40rem;
+  font-size: 1.02rem;
+  color: var(--text-h);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.experience-timeline {
+  --timeline-axis: 0.425rem;
+  --timeline-spine: 2px;
+  --node-size: 0.75rem;
+  --timeline-gap: 1.15rem;
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--timeline-gap);
+}
+
+/* Vertical spine — centered on axis */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: var(--timeline-axis);
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: var(--timeline-spine);
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    var(--accent-border) 0%,
+    var(--accent) 35%,
+    var(--accent-border) 100%
+  );
+  border-radius: 999px;
+  opacity: 0.65;
+}
+
+.experience-timeline > li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Cards sit to the right of the spine; nodes sit on the axis */
+.experience-entry {
+  position: relative;
+  padding-left: calc(var(--timeline-axis) + var(--node-size) / 2 + 1.1rem);
+}
+
+/* Timeline node — center aligned to spine */
+.experience-entry-marker {
+  position: absolute;
+  left: var(--timeline-axis);
+  top: 1.35rem;
+  width: var(--node-size);
+  height: var(--node-size);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow:
+    0 0 0 4px var(--accent-bg),
+    0 0 12px rgba(170, 59, 255, 0.35);
+  z-index: 1;
+}
+
+.experience-entry--incoming .experience-entry-marker {
+  border-style: dashed;
+  animation: experience-node-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes experience-node-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px var(--accent-bg),
+      0 0 8px rgba(170, 59, 255, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px var(--accent-bg),
+      0 0 16px rgba(170, 59, 255, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-entry--incoming .experience-entry-marker {
+    animation: none;
+  }
+}
+
+.experience-card {
+  padding: 0.95rem 1.05rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--code-bg);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.experience-entry:hover .experience-card,
+.experience-entry:focus-within .experience-card {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow);
+}
+
+.experience-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.experience-card-titles {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.experience-role {
+  margin: 0;
+  font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.05rem);
+  font-weight: 500;
+  color: var(--text-h);
+  letter-spacing: -0.02em;
+}
+
+.experience-org {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.experience-badge {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+}
+
+.experience-badge--current {
+  color: var(--text-h);
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.experience-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.experience-meta-item::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-border);
+}
+
+.experience-meta-item:first-child::before {
+  display: none;
+}
+
+.experience-summary {
+  margin: 0 0 0.7rem;
+  font-size: 0.88rem;
+  color: var(--text-h);
+  font-style: italic;
+}
+
+.experience-bullets {
+  margin: 0;
+  padding-left: 1.35rem;
+  list-style: disc outside;
+  list-style-type: disc;
+}
+
+.experience-bullets li {
+  display: list-item;
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+}
+
+.experience-bullets li::marker {
+  color: var(--accent);
+}
+
+.experience-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--border);
+}
+
+.experience-tag {
+  font-size: 0.72rem;
+  padding: 0.22rem 0.48rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+}
+
+/* Staggered entrance when panel opens */
+.experience-entry {
+  opacity: 0;
+  animation: experience-entry-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.experience-timeline > li:nth-child(1) .experience-entry {
+  animation-delay: 0.08s;
+}
+.experience-timeline > li:nth-child(2) .experience-entry {
+  animation-delay: 0.16s;
+}
+.experience-timeline > li:nth-child(3) .experience-entry {
+  animation-delay: 0.24s;
+}
+.experience-timeline > li:nth-child(4) .experience-entry {
+  animation-delay: 0.32s;
+}
+
+@keyframes experience-entry-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-entry {
+    opacity: 1;
+    animation: none;
+  }
+}

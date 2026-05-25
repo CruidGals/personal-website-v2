@@ -102,6 +102,25 @@
   font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);
 }
 
+.fold-panel-header--about {
+  justify-content: center;
+  position: relative;
+}
+
+.fold-panel-header--about h2 {
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: clamp(0.85rem, 0.8rem + 0.25vw, 0.95rem);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.fold-panel-header--about .fold-close {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+}
+
 .fold-close {
   font-family: var(--sans);
   font-size: 0.95rem;
@@ -146,4 +165,11 @@
 
 .fold-panel-body p:last-child {
   margin-bottom: 0;
+}
+
+.fold-panel-body--about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
 }
