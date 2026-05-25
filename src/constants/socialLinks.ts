@@ -1,8 +1,8 @@
 /** Edit these URLs; drop `public/resume.pdf` (or point `resume` elsewhere). */
 export const SOCIAL_LINKS = {
-  linkedin: 'https://www.linkedin.com/in/your-handle',
-  github: 'https://github.com/your-handle',
-  resume: '/resume.pdf',
+  linkedin: 'https://www.linkedin.com/in/kyle-chiem/',
+  github: 'https://github.com/CruidGals',
+  resume: '/kylechiem_4_9_2026_2028.pdf',
 } as const
 
 export const SOCIAL_ICON_LINK_CLASS =
