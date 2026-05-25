@@ -96,6 +96,8 @@ export function ProjectCard({ entry }: ProjectCardProps) {
 
         <p className="project-card-tagline">{entry.tagline}</p>
 
+        <hr className="project-card-divider" aria-hidden="true" />
+
         <div className="project-card-tags" role="list" aria-label="Technologies">
           {entry.technologies.map((tech) => (
             <span key={tech} className="project-card-tag" role="listitem">
