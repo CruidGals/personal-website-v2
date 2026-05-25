@@ -16,10 +16,7 @@ export const SECTION_COPY = {
   },
   contact: {
     title: 'Contact',
-    paragraphs: [
-      'Add an email, form, or calendar link here so visitors can reach you.',
-      'Social links on the home screen can complement this section.',
-    ],
+    paragraphs: [],
   },
 } as const
 
