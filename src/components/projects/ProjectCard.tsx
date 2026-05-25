@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { PROJECT_THUMBNAIL_BY_ID } from '../../data/projectThumbnails'
 import type { ProjectEntry, ProjectLink } from '../../data/projects'
 import {
   getProjectLinkVisual,
@@ -63,7 +64,7 @@ function ProjectLinkIcon({ link }: { link: ProjectLink }) {
 }
 
 export function ProjectCard({ entry }: ProjectCardProps) {
-  const hasImage = Boolean(entry.imageSrc)
+  const thumbnailSrc = PROJECT_THUMBNAIL_BY_ID[entry.id]
 
   return (
     <article
@@ -71,11 +72,11 @@ export function ProjectCard({ entry }: ProjectCardProps) {
       aria-labelledby={`project-title-${entry.id}`}
     >
       <div className="project-card-media">
-        {hasImage ? (
+        {thumbnailSrc ? (
           <img
             className="project-card-image"
-            src={entry.imageSrc}
-            alt={entry.imageAlt ?? ''}
+            src={thumbnailSrc}
+            alt={`${entry.title} preview`}
             loading="lazy"
             decoding="async"
           />

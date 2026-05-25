@@ -16,9 +16,6 @@ export type ProjectEntry = {
   links: readonly ProjectLink[]
   /** Optional headline badge, e.g. hackathon award. */
   award?: string
-  /** Thumbnail path under `public/` — omit for CSS placeholder graphic. */
-  imageSrc?: string
-  imageAlt?: string
   /** Span two columns in the projects grid when space allows. */
   featured?: boolean
 }
