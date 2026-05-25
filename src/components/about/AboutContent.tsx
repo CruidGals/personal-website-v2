@@ -1,8 +1,7 @@
+import aboutPhoto from '../../assets/about/about.jpg'
 import {
   ABOUT_CROSS_LINKS,
   ABOUT_INTRO,
-  ABOUT_RESUME_HREF,
-  ABOUT_RESUME_LABEL,
 } from '../../data/about'
 import {
   LANGUAGE_CAROUSEL_SKILLS,
@@ -22,17 +21,26 @@ type AboutContentProps = {
 export function AboutContent({ onNavigateToSection }: AboutContentProps) {
   return (
     <article className="about-content">
-      <div className="about-intro">
-        {ABOUT_INTRO.map((sentence) => (
-          <p key={sentence}>{sentence}</p>
-        ))}
-      </div>
+      <div className="about-intro-row">
+        <div className="about-intro-copy">
+          <div className="about-intro">
+            {ABOUT_INTRO.map((sentence) => (
+              <p key={sentence}>{sentence}</p>
+            ))}
+          </div>
+        </div>
 
-      <p className="about-resume">
-        <a className="about-resume-link" href={ABOUT_RESUME_HREF}>
-          {ABOUT_RESUME_LABEL}
-        </a>
-      </p>
+        <figure className="about-photo">
+          <img
+            src={aboutPhoto}
+            alt="Kyle Chiem standing on a pier at night with a lit Ferris wheel in the background"
+            width={320}
+            height={427}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
 
       <hr className="about-divider" aria-hidden="true" />
 

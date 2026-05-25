@@ -14,12 +14,8 @@ export type SkillGroup = {
 /** Two-sentence opener — education & interests (not work history). */
 export const ABOUT_INTRO = [
   'As a Schreyer Honors scholar at Penn State, I am studying computer science and mathematics in the College of Engineering, grounded in algorithms, systems programming, and digital design.',
-  'What pulls me in most is reinforcement learning, computer vision, and humanoid robotics, plus the same curiosity that shows up in basketball, speedcubing, and side projects that feel like sci‑fi made practical. Here\'s my resume if you\'d like to see more:',
+  'What pulls me in most is reinforcement learning, computer vision, and humanoid robotics, plus the same curiosity that shows up in basketball, speedcubing, and side projects that feel like sci‑fi made practical.',
 ] as const
-
-export const ABOUT_RESUME_LABEL = 'Resume [PDF]'
-
-export const ABOUT_RESUME_HREF = '/kylechiem_4_9_2026_2028.pdf'
 
 export const ABOUT_SKILL_GROUPS: readonly SkillGroup[] = [
   {
