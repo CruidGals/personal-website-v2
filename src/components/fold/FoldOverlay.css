@@ -102,12 +102,12 @@
   font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);
 }
 
-.fold-panel-header--about {
+.fold-panel-header--centered {
   justify-content: center;
   position: relative;
 }
 
-.fold-panel-header--about h2 {
+.fold-panel-header--centered h2 {
   text-align: center;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -116,7 +116,7 @@
   color: var(--accent);
 }
 
-.fold-panel-header--about .fold-close {
+.fold-panel-header--centered .fold-close {
   position: absolute;
   right: clamp(1rem, 3vw, 2rem);
 }
@@ -167,9 +167,12 @@
   margin-bottom: 0;
 }
 
-.fold-panel-body--about {
+.fold-panel-body--about,
+.fold-panel-body--experience,
+.fold-panel-body--projects {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-inline: clamp(1.25rem, 4vw, 2.5rem);
 }
+

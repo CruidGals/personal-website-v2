@@ -51,14 +51,6 @@ export function getProjectLinkVisual(link: ProjectLink): ProjectLinkVisual {
     }
   }
 
-  if (host.endsWith('github.io')) {
-    return {
-      type: 'simpleicon',
-      slug: 'githubpages',
-      label: 'Open live demo on GitHub Pages',
-    }
-  }
-
   if (host.includes('youtube.com') || host === 'youtu.be') {
     return {
       type: 'fontawesome',
@@ -84,7 +76,7 @@ export function getProjectLinkVisual(link: ProjectLink): ProjectLinkVisual {
     }
   }
 
-  if (link.kind === 'demo') {
+  if (link.kind === 'demo' || host.endsWith('github.io')) {
     if (link.href?.endsWith('.pdf')) {
       return {
         type: 'fontawesome',
@@ -96,7 +88,7 @@ export function getProjectLinkVisual(link: ProjectLink): ProjectLinkVisual {
     return {
       type: 'fontawesome',
       icon: faGlobe,
-      label: fallbackLabel,
+      label: 'Open live demo',
     }
   }
 

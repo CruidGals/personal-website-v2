@@ -2,23 +2,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid var(--border);
+  border: 1px solid #000;
   border-radius: 14px;
   background: var(--code-bg);
   overflow: hidden;
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.project-card:hover,
-.project-card:focus-within {
-  border-color: var(--accent-border);
-  box-shadow: var(--shadow);
-}
-
-.project-card--featured {
-  border-color: var(--accent-border);
 }
 
 /* Media / thumbnail */
@@ -27,7 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   aspect-ratio: 16 / 10;
+  padding: 0.75rem;
   overflow: hidden;
   background: var(--code-bg);
   border-bottom: 1px solid var(--border);
@@ -73,24 +62,6 @@
   user-select: none;
 }
 
-.project-card-award {
-  position: absolute;
-  top: 0.65rem;
-  left: 0.65rem;
-  max-width: calc(100% - 1.3rem);
-  padding: 0.32rem 0.6rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-h);
-  background: var(--bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 6px;
-  box-shadow: var(--shadow);
-  line-height: 1.25;
-}
-
 /* Body */
 .project-card-body {
   display: flex;
@@ -101,14 +72,6 @@
   text-align: left;
 }
 
-.project-card-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.35rem 0.75rem;
-}
-
 .project-card-title {
   margin: 0;
   font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
@@ -116,14 +79,6 @@
   color: var(--text-h);
   letter-spacing: -0.02em;
   line-height: 1.25;
-}
-
-.project-card-dates {
-  margin: 0;
-  flex-shrink: 0;
-  font-size: 0.78rem;
-  font-family: var(--mono);
-  color: var(--text);
 }
 
 .project-card-tagline {
@@ -157,7 +112,6 @@
   align-items: center;
   gap: 0.15rem;
   padding-top: 0.35rem;
-  border-top: 1px dashed var(--border);
 }
 
 .project-link {
@@ -168,14 +122,6 @@
   color: var(--text-h);
   text-decoration: none;
   border-radius: 8px;
-  transition:
-    color 0.2s ease,
-    filter 0.2s ease;
-}
-
-.project-link:hover {
-  color: var(--accent);
-  filter: drop-shadow(0 0 10px rgba(170, 59, 255, 0.4));
 }
 
 .project-link:focus-visible {
@@ -193,20 +139,7 @@
   object-fit: contain;
 }
 
-.project-link--github:hover {
-  color: #24292f;
-}
-
-.project-link--demo:hover {
-  color: var(--accent);
-}
-
 .project-link--placeholder {
   cursor: default;
   opacity: 0.45;
-}
-
-.project-link--placeholder:hover {
-  color: var(--text-h);
-  filter: none;
 }

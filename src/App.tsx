@@ -1,5 +1,6 @@
 import { type AnimationEvent, useCallback, useId, useState } from 'react'
 import { AboutContent } from './components/about/AboutContent'
+import { ContactContent } from './components/contact/ContactContent'
 import { ExperienceTimeline } from './components/experience/ExperienceTimeline'
 import { ProjectsContent } from './components/projects/ProjectsContent'
 import { FoldOverlay } from './components/fold/FoldOverlay'
@@ -62,7 +63,8 @@ function App() {
           paragraphs={
             openSection === 'about' ||
             openSection === 'experience' ||
-            openSection === 'projects'
+            openSection === 'projects' ||
+            openSection === 'contact'
               ? undefined
               : copy.paragraphs
           }
@@ -77,6 +79,7 @@ function App() {
           )}
           {openSection === 'experience' && <ExperienceTimeline />}
           {openSection === 'projects' && <ProjectsContent />}
+          {openSection === 'contact' && <ContactContent />}
         </FoldOverlay>
       )}
     </>

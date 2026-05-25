@@ -30,6 +30,21 @@ export function FoldOverlay({
   const edgeClass =
     slideFrom === 'right' ? 'fold-panel--from-right' : 'fold-panel--from-left'
 
+  const centeredTitleHeader =
+    sectionKey === 'about' ||
+    sectionKey === 'projects' ||
+    sectionKey === 'experience' ||
+    sectionKey === 'contact'
+
+  const bodyModifier =
+    sectionKey === 'about'
+      ? ' fold-panel-body--about'
+      : sectionKey === 'experience'
+        ? ' fold-panel-body--experience'
+        : sectionKey === 'projects'
+          ? ' fold-panel-body--projects'
+          : ''
+
   return (
     <div className="fold-root" role="presentation">
       <div
@@ -41,7 +56,7 @@ export function FoldOverlay({
         onAnimationEnd={onExitAnimationEnd}
       >
         <div
-          className={`fold-panel-header${sectionKey === 'about' ? ' fold-panel-header--about' : ''}`}
+          className={`fold-panel-header${centeredTitleHeader ? ' fold-panel-header--centered' : ''}`}
         >
           <h2 id={titleId}>{title}</h2>
           <button
@@ -53,9 +68,7 @@ export function FoldOverlay({
             Close
           </button>
         </div>
-        <div
-          className={`fold-panel-body${sectionKey === 'about' ? ' fold-panel-body--about' : ''}`}
-        >
+        <div className={`fold-panel-body${bodyModifier}`}>
           {children ??
             paragraphs.map((text) => <p key={text}>{text}</p>)}
         </div>

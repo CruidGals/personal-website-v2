@@ -87,18 +87,12 @@ export function ProjectCard({ entry }: ProjectCardProps) {
             </span>
           </div>
         )}
-        {entry.award && (
-          <span className="project-card-award">{entry.award}</span>
-        )}
       </div>
 
       <div className="project-card-body">
-        <header className="project-card-header">
-          <h3 className="project-card-title" id={`project-title-${entry.id}`}>
-            {entry.title}
-          </h3>
-          <p className="project-card-dates">{entry.dates}</p>
-        </header>
+        <h3 className="project-card-title" id={`project-title-${entry.id}`}>
+          {entry.title}
+        </h3>
 
         <p className="project-card-tagline">{entry.tagline}</p>
 
