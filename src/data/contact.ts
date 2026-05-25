@@ -1,8 +1,7 @@
 import { SOCIAL_LINKS } from '../constants/socialLinks'
 
 export const CONTACT_INTRO = [
-  'I am open to internships, research collaborations, hackathon organizing, and software engineering roles.',
-  'The fastest way to reach me is email — I try to reply within a day or two.',
+  'I am open to internships, research collaborations, hackathon organizing, and software engineering roles.'
 ] as const
 
 export const CONTACT_EMAIL = 'kyle.chiem@outlook.com'
