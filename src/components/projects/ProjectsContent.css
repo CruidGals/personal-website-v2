@@ -47,6 +47,9 @@
 .projects-grid-item:nth-child(4) {
   animation-delay: 0.24s;
 }
+.projects-grid-item:nth-child(5) {
+  animation-delay: 0.3s;
+}
 
 @keyframes projects-item-in {
   from {

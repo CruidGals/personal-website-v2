@@ -13,8 +13,8 @@ export type SkillGroup = {
 
 /** Two-sentence opener — education & interests (not work history). */
 export const ABOUT_INTRO = [
-  'As a Schreyer Honors scholar at Penn State, I am studying computer science and mathematics in the College of Engineering—grounded in algorithms, systems programming, and digital design.',
-  'What pulls me in most is reinforcement learning, computer vision, and humanoid robotics, plus the same curiosity that shows up in basketball, speedcubing, and side projects that feel like sci‑fi made practical.',
+  'As a Schreyer Honors scholar at Penn State, I am studying computer science and mathematics in the College of Engineering, grounded in algorithms, systems programming, and digital design.',
+  'What pulls me in most is reinforcement learning, computer vision, and humanoid robotics, plus the same curiosity that shows up in basketball, speedcubing, and side projects that feel like sci‑fi made practical. Here\'s my resume if you\'d like to see more:',
 ] as const
 
 export const ABOUT_RESUME_LABEL = 'Resume [PDF]'
@@ -30,7 +30,7 @@ export const ABOUT_SKILL_GROUPS: readonly SkillGroup[] = [
       { name: 'Java', iconSlug: 'openjdk' },
       { name: 'C++', iconSlug: 'cplusplus' },
       { name: 'C', iconSlug: 'c' },
-      { name: 'SQL', iconSlug: 'postgresql' },
+      { name: 'SQL', iconSlug: 'mysql' },
       { name: 'JavaScript', iconSlug: 'javascript' },
       { name: 'Kotlin', iconSlug: 'kotlin' },
       { name: 'Flutter', iconSlug: 'flutter' },
@@ -43,22 +43,10 @@ export const ABOUT_SKILL_GROUPS: readonly SkillGroup[] = [
       { name: 'SQLAlchemy', iconSlug: 'sqlalchemy' },
       { name: 'NestJS', iconSlug: 'nestjs' },
       { name: 'Node.js', iconSlug: 'nodedotjs' },
-      { name: 'AWS', iconSlug: 'amazonwebservices' },
-      { name: 'PostgreSQL', iconSlug: 'postgresql' },
+      { name: 'MySQL', iconSlug: 'mysql' },
       { name: 'Git', iconSlug: 'git' },
       { name: 'PyTorch', iconSlug: 'pytorch' },
       { name: 'Firebase', iconSlug: 'firebase' },
-    ],
-  },
-  {
-    label: 'Concepts',
-    skills: [
-      { name: 'Backend system design' },
-      { name: 'Reinforcement learning' },
-      { name: 'Scalable infrastructure' },
-      { name: 'API integration' },
-      { name: 'Full-stack development' },
-      { name: 'Problem solving' },
     ],
   },
 ] as const

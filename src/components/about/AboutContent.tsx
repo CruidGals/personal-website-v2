@@ -3,46 +3,20 @@ import {
   ABOUT_INTRO,
   ABOUT_RESUME_HREF,
   ABOUT_RESUME_LABEL,
-  ABOUT_SKILL_GROUPS,
-  type SkillEntry,
 } from '../../data/about'
+import {
+  LANGUAGE_CAROUSEL_SKILLS,
+  TECHNOLOGY_CAROUSEL_SKILLS,
+} from '../../data/skillCarousel'
 import {
   navigateToSection,
   type SectionNavigator,
 } from '../../utils/sectionCrossLinks'
+import { SkillsCarousel } from './SkillsCarousel'
 import './AboutContent.css'
 
 type AboutContentProps = {
   onNavigateToSection: SectionNavigator
-}
-
-function skillIconUrl(slug: string): string {
-  return `https://cdn.simpleicons.org/${slug}`
-}
-
-function SkillChip({ skill }: { skill: SkillEntry }) {
-  if (!skill.iconSlug) {
-    return (
-      <span className="about-skill-chip about-skill-chip--concept">
-        {skill.name}
-      </span>
-    )
-  }
-
-  return (
-    <span className="about-skill-chip">
-      <img
-        className="about-skill-icon"
-        src={skillIconUrl(skill.iconSlug)}
-        alt=""
-        width={18}
-        height={18}
-        loading="lazy"
-        decoding="async"
-      />
-      {skill.name}
-    </span>
-  )
 }
 
 export function AboutContent({ onNavigateToSection }: AboutContentProps) {
@@ -60,23 +34,22 @@ export function AboutContent({ onNavigateToSection }: AboutContentProps) {
         </a>
       </p>
 
+      <hr className="about-divider" aria-hidden="true" />
+
       <section className="about-skills" aria-labelledby="about-skills-heading">
         <h3 id="about-skills-heading" className="about-section-title">
           Technical skills
         </h3>
-        {ABOUT_SKILL_GROUPS.map((group) => (
-          <div key={group.label} className="about-skill-group">
-            <h4 className="about-section-title about-skill-group-label">
-              {group.label}
-            </h4>
-            <div className="about-skill-grid">
-              {group.skills.map((skill) => (
-                <SkillChip key={skill.name} skill={skill} />
-              ))}
-            </div>
-          </div>
-        ))}
+
+        <SkillsCarousel label="Languages" items={LANGUAGE_CAROUSEL_SKILLS} />
+        <SkillsCarousel
+          label="Technologies"
+          items={TECHNOLOGY_CAROUSEL_SKILLS}
+          scrollSpeed={38}
+        />
       </section>
+
+      <hr className="about-divider" aria-hidden="true" />
 
       <nav className="about-cross-links" aria-label="Other sections">
         {ABOUT_CROSS_LINKS.map((link) => (
